@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+               body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #BFC2C2;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .img-container {
+            position: relative;
+            width: 200px; /* Set a fixed width for the image container */
+            height: 200px; /* Set a fixed height for the image container */
+            overflow: hidden; /* Hide overflow to maintain fixed size */
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio while covering the container */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .popup img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .popup button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery">
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y1', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg" alt="Image Y1">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y10.jpg','Y10', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y10.jpg" alt="Image Y10">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y100.JPG','Y100', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y100.JPG" alt="Image Y100">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y101', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y101.jpg" alt="Image Y101">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y102', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y102.jpg" alt="Image Y102">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y103', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y103.jpg" alt="Image Y103">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y104', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y104.jpg" alt="Image Y104">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y105', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y105.jpg" alt="Image Y105">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y106', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y106.jpg" alt="Image Y106">
+    </div>
+    <div class="img-container" onclick="showDetails('https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y1.jpg','Y107', 'Tumor detected')">
+        <img src="https://storage.cloud.google.com/mri-dataset/brain_tumor_dataset/yes/Y107.jpg" alt="Image Y107">
+    </div>
+    <!-- Add more images as needed -->
+</div>
+</div>
+<div class="popup" id="popup">
+    <img id="popup-img" src="" alt="Popup Image">
+    <p id="popup-details"></p>
+    <button onclick="closePopup()">Close</button>
+</div>
+<script>
+    function showDetails(imageUrl,title, details) {
+        const popup = document.getElementById('popup');
+        const popupImg = document.getElementById('popup-img');
+        const popupDetails = document.getElementById('popup-details');
+
+        // Set content for the popup
+        popupImg.src = imageUrl; // Replace with the actual image source
+        popupDetails.textContent = `${title}: ${details}`;
+
+        // Display the popup
+        popup.style.display = 'block';
+    }
+
+    function closePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
